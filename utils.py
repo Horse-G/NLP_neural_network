@@ -111,9 +111,13 @@ class Vocabulary:
         '''
 
         #YOUR IMPLEMENTATION GOES HERE
-       	print data[0] 
-
+       	print len(data), len(data[0]), data[0][0]
 	output = []
+ 	for list in data:
+	    for entry in list:
+		word = normalize(entry.form)
+		print word
+	#	output.append([word,entry.id])		
 	return output
 	 
     def entry(self, indices, pos_indices, arcs, labels):
