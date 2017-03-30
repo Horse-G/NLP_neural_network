@@ -13,7 +13,7 @@ INPUT_DIM = 50
 #dimensionality of RNN hidden state
 HIDDEN_DIM = 50
 
-NUMBER_OF_LAYERS = 0
+NUMBER_OF_LAYERS = 2
 characters = list("abcdefghijklmnopqrstuvwxyz ")
 characters.append("<EOS>")
 

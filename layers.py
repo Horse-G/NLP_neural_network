@@ -72,9 +72,12 @@ class MLP:
         b_o = parameter(self.b_o)
 
         #IMPLEMENT YOUR CODE BELOW
-	
-	output = nonlinearities[self.output_nonlinearity](W_o*input + b_o)      
+	hidden = input
+	for index, weight in enumerate(weights):
+	    hidden = nonlinearities[self.hidden_nonlinearity](weight*hidden + biases[index])	
+	output = nonlinearities[self.output_nonlinearity](W_o*hidden + b_o)      
 	return output 
+
 class SimpleRNN:
     '''
     Simple Recurrent Neural Network class
@@ -129,7 +132,8 @@ class SimpleRNN:
 	    input = input[::-1]
 	states = []
 	for i in xrange(len(input)):
-	    states.append(tanh(W_x*input[i] + W_h * h_0 + b))
+	    h_0 = tanh(W_x*input[i] +W_h * h_0 + b)
+	    states.append(h_0)
 
 	return [states,]       
 
