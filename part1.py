@@ -13,6 +13,7 @@ INPUT_DIM = 50
 #dimensionality of RNN hidden state
 HIDDEN_DIM = 50
 
+NUMBER_OF_LAYERS = 0
 characters = list("abcdefghijklmnopqrstuvwxyz ")
 characters.append("<EOS>")
 
@@ -37,7 +38,7 @@ def main(rnn_type = 'simple_rnn'):
     lookup = model.add_lookup_parameters((VOCAB_SIZE, INPUT_DIM))        
     rnn = rnn_types[rnn_type](model, INPUT_DIM, HIDDEN_DIM)
     mlp = MLP(model, HIDDEN_DIM, HIDDEN_DIM, VOCAB_SIZE,
-              output_nonlinearity='softmax', num_layers=0)
+              output_nonlinearity='softmax', num_layers=NUMBER_OF_LAYERS)
 
     #our single training example    
     sentence = "a quick brown fox jumped over the lazy dog"
