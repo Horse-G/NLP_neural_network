@@ -226,5 +226,21 @@ class LSTM:
         else:
             c_0 = c_start
         
-        #IMPLEMENT YOUR LSTM CODE HERE
-      	return output
+        #IMPLEMENT YOUR LSTM CODE HERE)
+	if self.reverse:
+	    input = input[::-1]	
+	states = []
+	cells = []
+	for i in xrange(len(input)):
+	    f_t = nonlinearities['sigmoid'](W_f * input[i] + U_f * h_0 + b_f)
+	    i_t = nonlinearities['sigmoid'](W_i * input[i] + U_i * h_0 + b_i)
+	    o_t = nonlinearities['sigmoid'](W_o * input[i] + U_o * h_0 + b_o)
+	    c_t = cmult(f_t,c_0) + cmult(i_t,tanh(W_c*input[i] + U_c*h_0 + b_c))
+	    h_t = cmult(o_t,tanh(c_t))
+	    #update parameter
+	    c_0 = c_t
+	    h_0 = h_t
+	    #store the state value
+	    states.append(h_0)
+	    cells.append(c_0) 
+      	return (states,cells)

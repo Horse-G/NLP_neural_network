@@ -13,7 +13,7 @@ def normalize(word):
     '''
     takes in a word string and returns the NUMBER token if a number and lowercase otherwise
     '''
-    if any(char.indigit() for char in word)
+    if any(char.isdigit() for char in word):
 	return NUMBER
 
     return word.lower()     
@@ -111,8 +111,11 @@ class Vocabulary:
         '''
 
         #YOUR IMPLEMENTATION GOES HERE
-        raise NotImplementedError
-        
+       	print data[0] 
+
+	output = []
+	return output
+	 
     def entry(self, indices, pos_indices, arcs, labels):
         '''
         generator to convert numeric indices to ConllEntry format

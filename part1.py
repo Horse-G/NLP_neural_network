@@ -13,7 +13,9 @@ INPUT_DIM = 50
 #dimensionality of RNN hidden state
 HIDDEN_DIM = 50
 
-NUMBER_OF_LAYERS = 2
+NUMBER_OF_LAYERS = 3
+TRAINING_SENTENCE = "one application for rnns is language modeling"
+
 characters = list("abcdefghijklmnopqrstuvwxyz ")
 characters.append("<EOS>")
 
@@ -41,7 +43,7 @@ def main(rnn_type = 'simple_rnn'):
               output_nonlinearity='softmax', num_layers=NUMBER_OF_LAYERS)
 
     #our single training example    
-    sentence = "a quick brown fox jumped over the lazy dog"
+    sentence = TRAINING_SENTENCE  #"a quick brown fox jumped over the lazy dog"
 
     train(model, rnn, mlp, lookup, sentence)
     
@@ -65,7 +67,7 @@ def do_one_sentence(rnn, mlp, lookup, sentence):
     loss = []
     for index,char in enumerate(sentence[:-1]):
         #get the softmax output of the MLP, and calculate the loss using the gold output
-        probs = mlp.get_output(states[0][index])
+	probs = mlp.get_output(states[0][index])
         loss.append( -log(probs[sentence[index+1]]))
         
     loss = esum(loss)
