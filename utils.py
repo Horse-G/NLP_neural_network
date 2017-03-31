@@ -238,6 +238,7 @@ def metrics(loss, uas, las):
     '''
 
     #YOU MAY WANT TO MODIFY THIS CODE HERE
-    print('Training loss: {}'.format(loss))
-    print('UAS: {}'.format(uas))
-    print('LAS: {}'.format(las))
+    #print('Training loss: {}'.format(loss))
+    #print('UAS: {}'.format(uas))
+    #print('LAS: {}'.format(las))
+    print uas, las

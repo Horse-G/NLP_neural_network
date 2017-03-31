@@ -209,7 +209,7 @@ class GraphParser:
             self.trainer.update()
             
             dynet.renew_cg()
-        print(time.time()-start)    
+        #print(time.time()-start)    
         return total_arc_loss, total_label_loss
 
     #parse a sentence given indices, return the highest scoring arcs and labels

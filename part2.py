@@ -31,7 +31,7 @@ def main(train_file, test_file, output, model, num_epochs, embeddings_init=None,
                                                                            deterministic=True)
 
     for epoch in range(num_epochs):
-        print 'Starting epoch', epoch
+        #print 'Starting epoch', epoch
         loss = 0
 
         #shuffle the training data
