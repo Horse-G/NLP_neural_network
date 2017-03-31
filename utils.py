@@ -14,6 +14,7 @@ def normalize(word):
     takes in a word string and returns the NUMBER token if a number and lowercase otherwise
     '''
     if any(char.isdigit() for char in word):
+	#print word
 	return NUMBER
 
     return word.lower()     
@@ -111,14 +112,31 @@ class Vocabulary:
         '''
 
         #YOUR IMPLEMENTATION GOES HERE
-       	print len(data), len(data[0]), data[0][0]
-	output = []
+	indeces, pos_indices, parent_indices, dependency = [],[],[],[]
  	for list in data:
-	    for entry in list:
-		word = normalize(entry.form)
-		print word
-	#	output.append([word,entry.id])		
-	return output
+	    index, pos_index, parent_index, dependency_index = [],[],[],[]
+	    for entry in list:	
+		word = entry.norm
+		if deterministic:
+		     random_sample = random.random()
+		     benchmark = 0.25/(0.25 + self.words[word])
+		  
+		     if random_sample<benchmark: 	
+		        #print word,random_sample,benchmark,"*****sample*****" 
+			word = UNKNOWN
+		else: 
+		     if entry.norm not in self.word2idx:
+			word = UNKOWN
+	    	index.append(self.word2idx[word])
+	    	pos_index.append(self.pos2idx[entry.pos])
+	    	parent_index.append(entry.parent_id)
+	    	dependency_index.append(self.rel2idx[entry.relation])
+		#print self.idx2word[index[-1]], index[-1],"pos", entry.pos,pos_index[-1],"parent",parent_index[-1],"dependency",dependency_index[-1],entry.relation
+	    indeces.append(index)
+	    pos_indices.append(pos_index)
+	    parent_indices.append(parent_index)
+	    dependency.append(dependency_index)		
+	return indeces,pos_indices,parent_indices, dependency
 	 
     def entry(self, indices, pos_indices, arcs, labels):
         '''
