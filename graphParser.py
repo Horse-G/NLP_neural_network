@@ -167,7 +167,7 @@ class GraphParser:
     def parse(self, indices, arcs=None, pos_indices=None):
         states = self.states(indices, pos_indices)
         scores = np.array(self.score_arcs(states))
-
+	
         return parse_proj(scores, arcs)
 
     #given a list of indices and arcs, return the highest scoring labels

@@ -83,6 +83,7 @@ class Vocabulary:
 
         #need to add the unknown token
         self.idx2word = [UNKNOWN] + self.idx2word
+	self.idx2rel = ['csubj'] + self.idx2rel
 
         #reverse lookup table for strings to indices
         self.word2idx = {w: i for i, w in enumerate(self.idx2word)}
