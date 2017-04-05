@@ -118,7 +118,7 @@ class Vocabulary:
 	    index, pos_index, parent_index, dependency_index = [],[],[],[]
 	    for entry in list:	
 		word = entry.norm
-		if deterministic:
+		if not deterministic:
 		     random_sample = random.random()
 		     benchmark = 0.25/(0.25 + self.words[word])
 		  
@@ -127,7 +127,7 @@ class Vocabulary:
 			word = UNKNOWN
 		else: 
 		     if entry.norm not in self.word2idx:
-			word = UNKOWN
+			word = UNKNOWN
 	    	index.append(self.word2idx[word])
 	    	pos_index.append(self.pos2idx[entry.pos])
 	    	parent_index.append(entry.parent_id)
@@ -238,7 +238,7 @@ def metrics(loss, uas, las):
     '''
 
     #YOU MAY WANT TO MODIFY THIS CODE HERE
-    #print('Training loss: {}'.format(loss))
+    print('Training loss: {}'.format(loss))
     #print('UAS: {}'.format(uas))
     #print('LAS: {}'.format(las))
     print uas, las

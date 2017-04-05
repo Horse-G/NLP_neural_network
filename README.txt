@@ -3,11 +3,16 @@ Xiaoqian Ma
 xm2164
 
 Part 2
-a) take care number with more clear category, i.e. date, fraction, time mark and etc.
+a) 
+take care number with more clear category, i.e. date, fraction, time mark and etc.
+Another approach to balance the level of UNKNOWN words in training and testing data is to,
+1) calculate the percentage of UNKNONW words in the training data first,
+2) replace words in the testing data that are not part of the vocalbulary to UNKNOWN tag only propotionally to the level pertained in the training set. Randomly replace other words that are not in the vocabulary with some known words. 
+In this way, the algorithm with get ride of the undeserved performance gain for giving two different unknown words the same matching result. And in this way, it may yeild a more procise result in predictions. 
 
-
-b) 
-
+b)
+As Eliyahu Kiperwasser describe in the paper, there are some mysterious performance mismatch when adding more embeddings. "when adding external word embeddings the accuracy of the graph-based parser degrades." So,in practice, the choice of features may not be randomly selected without precausious and some semi-supervised learning may help promote the performance.   
+The order of processing the four conditions may have different effects on how the algorithm behaves. 
 
 c)
 English without POS

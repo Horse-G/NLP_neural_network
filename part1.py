@@ -14,7 +14,8 @@ INPUT_DIM = 50
 HIDDEN_DIM = 50
 
 NUMBER_OF_LAYERS = 3
-TRAINING_SENTENCE = "one application for rnns is language modeling"
+#TRAINING_SENTENCE = "one application for rnns is language modeling"
+TRAINING_SENTENCE = 'a quick brown fox jumped over the lazy dog'
 
 characters = list("abcdefghijklmnopqrstuvwxyz ")
 characters.append("<EOS>")
